@@ -1,0 +1,274 @@
+'''
+this program seperates them into two lists : one for even numbers and another for odd numbers
+'''
+#define the list of numbers
+numbers =[10, 501, 22, 37, 100, 999, 87, 351]
+
+#initialize empty lists to store even and odd numbers
+even_numbers =[]
+odd_numbers = []
+#loop through each numbers in the list
+for number in numbers:
+#check if the number is even by seeing if it's divisible by 2 without a reminder
+    if number % 2 == 0:
+#if it's even, add it to the even_numbers list
+        even_numbers.append(number)
+else:
+        odd_numbers.append(number)
+#print out the lists of even and odd numbers
+print("even numbers :",even_numbers)
+print("odd numbers:",odd_numbers)    
+ 
+
+''' 
+this program counts all the prime numbers and creates a  new list containing the prime and non prime numbers
+
+'''
+numbers = [10, 501, 22, 37, 100, 999, 87, 351]
+# Initialize an empty list to store prime numbers
+prime_numbers = []
+# Function to check if a number is prime
+def is_prime(num):
+    print("Checking if", num, "is prime")
+# Prime numbers are greater than 1
+    if num > 1:
+# Check for factors from 2 to the square root of the number
+        for i in range(2, int(num ** 0.5) + 1):
+# If the number is divisible by any other number, it's not prime
+            if num % i == 0:
+                print(num, "is divisible by", i)
+                return False
+# If no factors found, the number is prime
+        print(num, "is prime")
+        return True
+    else:
+# Numbers less than or equal to 1 are not prime
+        print(num, "is not prime")
+        return False
+# Loop through each number in the list
+for number in numbers:
+# Check if the number is prime using the is_prime function
+    if is_prime(number):
+# If it's prime, add it to the prime_numbers list
+        prime_numbers.append(number)
+# Print out the list of prime numbers
+print("Prime numbers:", prime_numbers)
+
+
+'''
+counting happy numbers in a python list
+
+'''
+
+def is_happy(num):
+ # Set to store previously seen numbers during the process  
+    seen = set()  
+# Continue  until either num becomes 1 (happy) or it repeats
+    while num != 1 and num not in seen: 
+# Add num to the set
+        seen.add(num)  
+# Calculate the sum of squares of digits of num 
+        num = sum(int(digit)**2 for digit in str(num))  
+# Return True if num is happy, False otherwise
+    return num == 1  
+# Function to count the number of Happy numbers in a given list
+def count_happy_numbers(nums):
+# Initialize count to 0
+    count = 0  
+# Iterate through each number in the list
+    for num in nums:  
+# Check if the number is happy     
+        if is_happy(num):  
+# Increment the count if the number is happy          
+            count += 1 
+# Return the count of happy numbers
+            return count  
+# Given list of numbers
+numbers = [10, 501, 22, 37, 100, 999, 87, 351]
+# Count the number of Happy numbers in the given list
+happy_count = count_happy_numbers(numbers)
+# Print the count of Happy numbers
+print("Number of Happy numbers:", happy_count)
+'''
+python to find the sum of the first and last digit of an integer
+
+'''
+def sum_of_first_and_last_digit(num):
+    # Convert the number to a string to easily access digits
+    num_str = str(num)
+    
+    # Extract the first and last digits
+    first_digit = int(num_str[0])
+    last_digit = int(num_str[-1])
+    
+    # Calculate the sum
+    sum_of_digits = first_digit + last_digit
+    
+    return sum_of_digits
+
+# Test the function
+num = int(input("Enter an integer: "))
+result = sum_of_first_and_last_digit(num)
+print("Sum of first and last digit:", result)
+
+
+'''
+algorithm for optimally distributing mangoes among students
+
+'''
+def distribute_mangoes(mangoes, students ) :
+# Sort the list of mangoes
+    mangoes.sort()
+# Initialize variables to track minimum difference and index of sublist
+    min_difference = float('inf')
+    min_index = 0
+# Iterate through the sorted list to find the sublist with minimum difference
+    for i in range(len(mangoes) - students + 1):
+        difference = mangoes[i + students - 1] - mangoes[i]
+        if difference < min_difference:
+            min_difference = difference
+            min_index = i
+# Return the sublist that satisfies the condition
+    return mangoes[min_index:min_index + students]
+mangoes = [5, 7, 10, 12, 15, 18, 20]
+students = 3
+result = distribute_mangoes(mangoes, students)
+print("Bags of mangoes distributed to students:", result)
+
+
+'''
+program to find dublicates in three lists
+
+'''
+def find_duplicates(list1, list2, list3):
+# Initialize an empty list to store duplicates
+    duplicates = []
+# Iterate through items in the first list
+    for item in list1: 
+# Check if the item is present in both list2 and list3
+        if item in list2 and item in list3: 
+#check if the item is present in both list2 and list3
+            duplicates.append(item) 
+# Return the list of duplicates
+    return duplicates  
+# Example lists
+list1 = [1, 2, 3, 4, 7]
+list2 = [4, 7, 6, 5, 8]
+list3 = [7, 6, 5, 8, 9]
+# Find duplicates
+result = find_duplicates(list1, list2, list3)
+print("Duplicates:", result)
+
+'''
+python program to find the first non-repeating element in a given lists of integers
+
+'''
+
+def first_non_repeating(nums):
+# Create a dictionary to store the frequency of each element
+    freq = {}
+# Count the frequency of each element in the list
+    for num in nums:
+        freq[num] = freq.get(num, 0) + 1
+# Iterate through the list again to find the first non-repeating element
+    for num in nums:
+        if freq[num] == 1:
+            return num
+# If no non-repeating element is found, return None
+    return None
+# Example usage:
+nums = [1, 2, 3, 6, 9, 1, 2, 3, 6]
+result = first_non_repeating(nums)
+if result is not None:
+    print("The first non-repeating element is:", result)
+else:
+    print("There are no non-repeating elements in the list.")
+
+
+'''
+python program to find the minimum elements in a rated and sorted list
+
+'''
+def find_minimum_element(sorted_list):
+# Check if the list is empty
+    if not sorted_list:  
+        return None
+    return sorted_list[0]
+# Example usage:
+sorted_list = [2,4,5,8,9]
+min_element = find_minimum_element(sorted_list)
+print("Minimum element:", min_element)
+
+'''
+Python program to find a triplet in a list whose sum is equal to a given value
+'''
+
+def find_triplet(lst, target):
+    n = len(lst)
+# Sort the list to use two-pointer approach
+    lst.sort()  
+    for i in range(n - 2):
+        left = i + 1
+        right = n - 1
+        while left < right:
+            current_sum = lst[i] + lst[left] + lst[right]
+            if current_sum == target:
+# Found the triplet
+                 return [lst[i], lst[left], lst[right]]  
+            elif current_sum < target:
+# Move left pointer to increase the sum
+                left += 1  
+            else:
+# Move right pointer to decrease the sum
+                right -= 1  
+# No triplet foun
+    return None  
+# Example usage
+if __name__ == "__main__":
+    given_list = [10, 20, 30, 9]
+    target_value = 59
+    result = find_triplet(given_list, target_value)
+    if result:
+        print("Triplet found:", result)
+    else:
+        print("No triplet found with the given target sum.")
+
+        '''
+# Python program to find if there is a sub-list with sum equal to Zero
+
+'''
+def sub_list_with_zero_sum(lst):
+# Iterate through the list
+    for i in range(len(lst)):
+        sum = 0
+# Check all sub-lists starting from index i
+        for j in range(i, len(lst)):
+            sum += lst[j]
+# If sum becomes zero, return True
+            if sum == 0:
+                return True
+# If no sub-list with sum zero is found, return False
+    return False
+# Example usage:
+lst = [4, 2, -3, 1, 6]
+print(sub_list_with_zero_sum(lst))
+
+'''
+# Python program to find if there is a sub-list with sum equal to Zero
+
+'''
+def sub_list_with_zero_sum(lst):
+# Iterate through the list
+    for i in range(len(lst)):
+        sum = 0
+# Check all sub-lists starting from index i
+        for j in range(i, len(lst)):
+            sum += lst[j]
+# If sum becomes zero, return True
+            if sum == 0:
+                return True
+# If no sub-list with sum zero is found, return False
+    return False
+# Example usage:
+lst = [3,-1,2,-3,1,6]
+print(sub_list_with_zero_sum(lst))
